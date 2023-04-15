@@ -1,19 +1,23 @@
 package com.numble.webnovel.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-public class Series {
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class Series extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @Column(nullable = false)
-    private Long novelId;
+    @OneToOne
+    @JoinColumn(name = "novelId")
+    private Novel novel;
 
     @Column(nullable = false)
     private Integer episode;

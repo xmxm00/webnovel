@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/novels")
 public class NovelController {
+
     @GetMapping("/{novelId}")
-    public String index(@PathVariable("novelId") Long novelId) {
+    public String getNovelDetail(@PathVariable("novelId") Long novelId) {
         String ret = "Hello World!\n" + novelId;
         return ret;
+    }
+
+    @GetMapping
+    public String getNovels() {
+
+        return "Fetched All Novels!";
     }
 }

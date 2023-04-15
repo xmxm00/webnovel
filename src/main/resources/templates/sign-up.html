@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>넘블챌린지 - 로그인</title>
+    <link rel="stylesheet" th:href="@{/css/sign.css}">
+</head>
+<body>
+<h1>웹소설 로그인</h1>
+<form method="post" action="/api/sign-up">
+    <div class="row">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="row">
+        <label for="nickname">별명</label>
+        <input type="text" name="nickname" id="nickname">
+    </div>
+    <div class="row">
+        <label for="email">이메일</label>
+        <input id="email" type="email" name="email" required>
+    </div>
+    <div class="row">
+        <label for="password">비밀번호</label>
+        <input id="password" type="password" name="password">
+    </div>
+    <div class="row">
+        <label for="check">비밀번호 확인</label>
+        <input id="check" type="password">
+    </div>
+    <button id="submit">회원가입</button>
+</form>
+<script>
+    const submitbtn = document.getElementById("submit");
+    submitbtn.addEventListener("click", function(e) {
+        console.dir(e);
+    });
+</script>
+</body>
+</html>

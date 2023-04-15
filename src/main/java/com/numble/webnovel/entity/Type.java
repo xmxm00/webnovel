@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "log_type")
 @Data
 public class Type {
     @Id

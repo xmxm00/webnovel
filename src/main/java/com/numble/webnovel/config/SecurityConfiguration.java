@@ -2,7 +2,6 @@ package com.numble.webnovel.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,9 +25,9 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/users/signin","/users/signup", "/exception").permitAll()
-                .antMatchers(HttpMethod.GET, "/novels/**").permitAll()
-
+                .antMatchers("/api/sign-in", "/api/sign-up").permitAll()
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
+                .antMatchers("/my/**").hasRole("USER")
                 .antMatchers("**exception**").permitAll()
 
                 .anyRequest().hasRole("ADMIN")
@@ -42,4 +41,9 @@ public class SecurityConfiguration {
 
         return httpSecurity.build();
     }
+
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring().antMatchers("/*.html", "/css/**", "/js/**");
+//    }
 }
