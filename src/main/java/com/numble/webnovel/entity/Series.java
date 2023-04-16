@@ -10,13 +10,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Series extends BaseEntity{
+public class Series extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "novelId")
+    @ManyToOne
+    @JoinColumn(name = "novel_id")
     private Novel novel;
 
     @Column(nullable = false)

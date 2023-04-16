@@ -8,9 +8,10 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "novel")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Novel extends BaseEntity{
+public class Novel extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +20,8 @@ public class Novel extends BaseEntity{
     @Column(nullable = false)
     private String author;
     private String description;
+
     @ManyToOne
-    @JoinColumn(name = "genre_ID")
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 }

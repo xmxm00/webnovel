@@ -25,7 +25,7 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/sign-in", "/api/sign-up").permitAll()
+                .antMatchers("/api/sign-in/**", "/api/sign-up", "/novels/**").permitAll()
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .antMatchers("/my/**").hasRole("USER")
                 .antMatchers("**exception**").permitAll()
